@@ -11,7 +11,7 @@ export class ImageGalleryItem extends Component {
         const { data: { id, webformatURL } } = this.props;
         return (
         <li id={id} className={css.item}>
-            <img className={css.img} src={webformatURL} alt="image" />
+            <img className={css.img} src={webformatURL} alt="something" />
             <div className={css.plug}>
                 <button onClick={this.handlerOnClick} className={css.button} type="button">Zoom in</button>
             </div>

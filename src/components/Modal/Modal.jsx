@@ -18,7 +18,7 @@ export class Modal extends Component {
     render() {
         return (
             <div onClick={this.props.closeModal} className={css.modal}>
-            <img className={css.img} src={this.props.largeImg} alt="image" />
+            <img className={css.img} src={this.props.largeImg} alt="something" />
         </div>
     )
     }
