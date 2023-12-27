@@ -16,7 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #394264;
-  color: aliceblue;
+  /* color: aliceblue; */
   box-sizing: border-box;
 }
 
