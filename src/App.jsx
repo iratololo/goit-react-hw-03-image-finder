@@ -5,10 +5,10 @@ import { Container } from "./components/Container/Container";
 import { Searchbar } from "./components/Searchbar/Searchbar";
 import { ImageGallery } from "./components/ImageGallery/ImageGallery";
 import { Button } from "./components/Button/Button";
-import { getAllImages } from "./api/gallery";
 import { Loader } from 'components/Loader/Loader';
 import { Error } from 'components/Error/Error';
 import { Modal } from 'components/Modal/Modal';
+import { getAllImages } from "./api/gallery";
 
 export class App extends Component {
   state = {
@@ -23,9 +23,7 @@ export class App extends Component {
     largeImg:"",
   }
 
-  handleOnSubmit = (e) => {
-    e.preventDefault();
-    const keyWord = e.currentTarget.elements.search.value;
+  handleOnSearch = (keyWord) => {
     this.setState({
       key: keyWord,
       page: 1,
@@ -84,10 +82,7 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.key !== this.state.key) {
-      this.getData()
-    }
-    if (prevState.page < this.state.page) {
+    if (prevState.key !== this.state.key || prevState.page !== this.state.page) {
       this.getData()
     }
   }
@@ -96,7 +91,7 @@ export class App extends Component {
     const { images, isLoading ,error, isEnd,key, isModal} = this.state;
     return (
       <Container Container>
-        <Searchbar handleOnSubmit={this.handleOnSubmit} />
+        <Searchbar handleOnSearch={this.handleOnSearch} />
         {isLoading && <Loader/>}
         {error&& <Error>{error}</Error>}
         {images.length !== 0 && <ImageGallery images={images} showModal={this.showModal} />}

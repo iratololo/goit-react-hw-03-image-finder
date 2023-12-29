@@ -1,9 +1,17 @@
+import { Component } from 'react';
+
 import css from "./Searchbar.module.css"
 
-export const Searchbar = ({handleOnSubmit}) => {
+export class Searchbar extends Component {
+    handleOnSubmit = (e) => {
+        e.preventDefault();
+        const keyWord = e.currentTarget.elements.search.value;
+        this.props.handleOnSearch(keyWord)
+    }
+    render() {
         return (
             <header className={css.searchbar}>
-                <form onSubmit={handleOnSubmit} className={css.form}>
+                <form onSubmit={this.handleOnSubmit} className={css.form}>
                     <button type="submit" className={css.button}>
                         <span>Search</span>
                     </button>
@@ -19,4 +27,5 @@ export const Searchbar = ({handleOnSubmit}) => {
                 </form>
             </header>
         )
+    }
 }
